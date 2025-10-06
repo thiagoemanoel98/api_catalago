@@ -12,6 +12,10 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseSwaggerUI(o =>
+    {
+        o.SwaggerEndpoint("/openapi/v1.json", "Minha API V1");
+    });
 }
 
 app.UseHttpsRedirection();
