@@ -16,7 +16,7 @@ public class Category
     
     [Required]
     [StringLength(80)] // 80 bytes
-    public string? Name { get; set; }
+    public string? Name { get; private set; }
     
     [Required]
     [StringLength(300)]
