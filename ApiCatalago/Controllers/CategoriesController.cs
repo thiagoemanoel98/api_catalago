@@ -16,6 +16,7 @@ public class CategoriesController: ControllerBase
         _context = context;
     }
 
+    // categories/products
     [HttpGet("products")]
     public ActionResult<IEnumerable<Category>> GetCategoriesProducts()
     {

@@ -19,9 +19,9 @@ public class ProductsController: ControllerBase
 
     // IENumerable mais otimizado que o List nesse caso
     [HttpGet]
-    public ActionResult<IEnumerable<Product>> Get()
+    public async Task<ActionResult<IEnumerable<Product>>> Get()
     {
-        var products = _context.Products.AsNoTracking().ToList();
+        var products = await _context.Products.AsNoTracking().ToListAsync();
         if (products is null)
         {
             return NotFound();
@@ -30,10 +30,10 @@ public class ProductsController: ControllerBase
         return products;
     }
 
-    [HttpGet("{id:int}")]
-    public ActionResult<Product> Get(int id)
+    [HttpGet("{id:int:min(1)}")]
+    public async Task<ActionResult<Product>> Get(int id)
     {
-        var product = _context.Products.AsNoTracking().FirstOrDefault(x => x.ProductId == id);
+        var product = await _context.Products.AsNoTracking().FirstOrDefaultAsync(x => x.ProductId == id);
         if (product is null)
             return NotFound("Produto não encontrado");
         return product;
