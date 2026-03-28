@@ -21,7 +21,7 @@ public class ProductsController: ControllerBase
     [HttpGet]
     public ActionResult<IEnumerable<Product>> Get()
     {
-        var products = _context.Products.ToList();
+        var products = _context.Products.AsNoTracking().ToList();
         if (products is null)
         {
             return NotFound();
@@ -33,7 +33,7 @@ public class ProductsController: ControllerBase
     [HttpGet("{id:int}")]
     public ActionResult<Product> Get(int id)
     {
-        var product = _context.Products.FirstOrDefault(x => x.ProductId == id);
+        var product = _context.Products.AsNoTracking().FirstOrDefault(x => x.ProductId == id);
         if (product is null)
             return NotFound("Produto não encontrado");
         return product;

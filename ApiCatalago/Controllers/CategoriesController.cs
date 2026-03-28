@@ -27,19 +27,33 @@ public class CategoriesController: ControllerBase
     [HttpGet]
     public ActionResult<IEnumerable<Category>> Get()
     {
-        return _context.Categories.ToList();
+        try
+        {
+            return _context.Categories.AsNoTracking().ToList();
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro interno. Contate o suporte.");
+        }
     }
 
     [HttpGet("{id:int}", Name = "GetCategory")]
     public ActionResult<Category> Get(int id)
     {
-        var category = _context.Categories.FirstOrDefault(c => c.CategoryId == id);
-
-        if (category is null)
+        try
         {
-            return NotFound("Caregoria não encontrada");
+            var category = _context.Categories.FirstOrDefault(c => c.CategoryId == id);
+
+            if (category is null)
+            {
+                return NotFound("Caregoria não encontrada");
+            }
+            return Ok(category);
         }
-        return Ok(category);
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro interno. Contate o suporte.");
+        }
     }
 
     [HttpPost]
@@ -47,7 +61,7 @@ public class CategoriesController: ControllerBase
     {
         if (category is null)
         {
-            return BadRequest();
+            return BadRequest("Dados inválidos");
         }
 
         _context.Categories.Add(category);
