@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using ApiCatalago.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,7 +10,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString));
 
 // Add services to the container.
-builder.Services.AddControllers();
+// ReferenceHandler.IgnoreCycles: Evita erros de ciclo de objeto
+builder.Services.AddControllers().AddJsonOptions(options =>
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
