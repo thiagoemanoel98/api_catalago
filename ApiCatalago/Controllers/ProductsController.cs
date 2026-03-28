@@ -1,6 +1,7 @@
 using ApiCatalago.Context;
 using ApiCatalago.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApiCatalago.Controllers;
 
@@ -27,5 +28,42 @@ public class ProductsController: ControllerBase
         }
         
         return products;
+    }
+
+    [HttpGet("{id:int}")]
+    public ActionResult<Product> Get(int id)
+    {
+        var product = _context.Products.FirstOrDefault(x => x.ProductId == id);
+        if (product is null)
+            return NotFound("Produto não encontrado");
+        return product;
+    }
+
+    [HttpPost]
+    public ActionResult Post(Product product)
+    {
+        if (product is null)
+            return BadRequest();
+        
+        _context.Products.Add(product);
+        _context.SaveChanges();
+        
+        return new CreatedAtRouteResult("Get", new { id = product.ProductId }, product);
+    }
+
+    // Restrição: Valor tem que ser inteiro 
+    [HttpPut("{id:int}")]
+    public ActionResult Put(int id, Product product)
+    {
+        if (id != product.ProductId)
+        {
+            return BadRequest();
+        }
+
+        // EF Core vai saber que essa entidade vai ser alterada e persistida
+        _context.Entry(product).State = EntityState.Modified;
+        _context.SaveChanges();
+
+        return Ok(product);
     }
 }
