@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using ApiCatalago.Context;
+using ApiCatalago.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddControllers().AddJsonOptions(options =>
     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 builder.Services.AddOpenApi();
+
+// Quando invoca IMyService, resolve MyService
+builder.Services.AddTransient<IMyService, MyService>();
 
 var app = builder.Build();
 

@@ -1,6 +1,7 @@
 using ApiCatalago.Context;
 using ApiCatalago.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApiCatalago.Controllers;
@@ -22,7 +23,7 @@ public class ProductsController: ControllerBase
     public async Task<ActionResult<IEnumerable<Product>>> Get()
     {
         var products = await _context.Products.AsNoTracking().ToListAsync();
-        if (products is null)
+        if (products.Count == 0)
         {
             return NotFound();
         }
@@ -31,8 +32,10 @@ public class ProductsController: ControllerBase
     }
 
     [HttpGet("{id:int:min(1)}")]
-    public async Task<ActionResult<Product>> Get(int id)
+    public async Task<ActionResult<Product>> Get(int id, [BindRequired] string name)
     {
+        var productName = name;
+        
         var product = await _context.Products.AsNoTracking().FirstOrDefaultAsync(x => x.ProductId == id);
         if (product is null)
             return NotFound("Produto não encontrado");

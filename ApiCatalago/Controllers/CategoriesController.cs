@@ -1,5 +1,6 @@
 using ApiCatalago.Context;
 using ApiCatalago.Models;
+using ApiCatalago.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,19 @@ public class CategoriesController: ControllerBase
     {
         _context = context;
     }
+
+    [HttpGet("UseFromServices/{name}")]
+    public ActionResult<string> GetTalkFromServices([FromServices] IMyService myService, string name)
+    {
+        return myService.Talk(name);
+    }
+    
+    [HttpGet("NoUseFromServices/{name}")]
+    public ActionResult<string> GetTalkNoFromServices(IMyService myService, string name)
+    {
+        return myService.Talk(name);
+    }
+    
 
     // categories/products
     [HttpGet("products")]
