@@ -1,4 +1,5 @@
 using ApiCatalago.Context;
+using ApiCatalago.Filters;
 using ApiCatalago.Models;
 using ApiCatalago.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -40,6 +41,7 @@ public class CategoriesController: ControllerBase
     }
 
     [HttpGet]
+    [ServiceFilter(typeof(ApiLoggingFilter))]
     public ActionResult<IEnumerable<Category>> Get()
     {
         try

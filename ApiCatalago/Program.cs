@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
 using ApiCatalago.Context;
 using ApiCatalago.Extensions;
+using ApiCatalago.Filters;
 using ApiCatalago.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,7 @@ builder.Services.AddOpenApi();
 
 // Quando invoca IMyService, resolve MyService
 builder.Services.AddTransient<IMyService, MyService>();
+builder.Services.AddScoped<ApiLoggingFilter>();
 
 var app = builder.Build();
 
