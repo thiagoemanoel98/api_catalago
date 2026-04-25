@@ -9,12 +9,12 @@ public class Product
     [Key]
     public int ProductId { get; set; }
     
-    [Required]
+    [Required(ErrorMessage = "Nome é obrigatório")]
     [StringLength(80)]
     public string Name { get; set; } = string.Empty;
     
     [Required]
-    [StringLength(300)] 
+    [StringLength(300, ErrorMessage = "Descrição deve ter no máximo 300 caracteres")] 
     public string? Description { get; set; }
     
     [Required]
