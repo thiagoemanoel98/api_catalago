@@ -12,10 +12,12 @@ namespace ApiCatalago.Controllers;
 public class CategoriesController: ControllerBase
 {
     private readonly AppDbContext _context;
+    private readonly ILogger _logger;
     
-    public CategoriesController(AppDbContext context)
+    public CategoriesController(AppDbContext context, ILogger<CategoriesController> logger) 
     {
         _context = context;
+        _logger = logger;
     }
 
     [HttpGet("UseFromServices/{name}")]
@@ -35,8 +37,8 @@ public class CategoriesController: ControllerBase
     [HttpGet("products")]
     public ActionResult<IEnumerable<Category>> GetCategoriesProducts()
     {
-        // Evitar ciclo de objeto
-        
+        _logger.LogInformation($" ======== GET api/categories/products ======== ");
+
         return _context.Categories.Include(c => c.Products).ToList<Category>();
     }
 
@@ -44,33 +46,20 @@ public class CategoriesController: ControllerBase
     [ServiceFilter(typeof(ApiLoggingFilter))]
     public ActionResult<IEnumerable<Category>> Get()
     {
-        try
-        {
-            return _context.Categories.AsNoTracking().ToList();
-        }
-        catch (Exception)
-        {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro interno. Contate o suporte.");
-        }
+        return _context.Categories.AsNoTracking().ToList();
     }
 
     [HttpGet("{id:int}", Name = "GetCategory")]
     public ActionResult<Category> Get(int id)
     {
-        try
-        {
-            var category = _context.Categories.FirstOrDefault(c => c.CategoryId == id);
+       
+        var category = _context.Categories.FirstOrDefault(c => c.CategoryId == id);
 
-            if (category is null)
-            {
-                return NotFound("Caregoria não encontrada");
-            }
-            return Ok(category);
-        }
-        catch (Exception)
+        if (category is null)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro interno. Contate o suporte.");
+            return NotFound("Caregoria não encontrada");
         }
+        return Ok(category);
     }
 
     [HttpPost]
@@ -114,6 +103,5 @@ public class CategoriesController: ControllerBase
         _context.SaveChanges();
         return Ok(category);
     }
-    
     
 }

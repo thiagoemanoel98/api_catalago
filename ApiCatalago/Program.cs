@@ -2,10 +2,16 @@ using System.Text.Json.Serialization;
 using ApiCatalago.Context;
 using ApiCatalago.Extensions;
 using ApiCatalago.Filters;
+using ApiCatalago.Logging;
 using ApiCatalago.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerProviderConfiguration
+{
+    LogLevel = LogLevel.Information
+}));
 
 // Configurando conexão com o Banco
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -14,9 +20,17 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // Add services to the container.
 // ReferenceHandler.IgnoreCycles: Evita erros de ciclo de objeto
-builder.Services.AddControllers().AddJsonOptions(options =>
-    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add(typeof(ApiExeptionFilter));
+}).AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+});
+    
 builder.Services.AddOpenApi();
+
+
 
 // Quando invoca IMyService, resolve MyService
 builder.Services.AddTransient<IMyService, MyService>();
