@@ -1,5 +1,6 @@
 using ApiCatalago.Context;
 using ApiCatalago.Models;
+using ApiCatalago.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
@@ -10,34 +11,32 @@ namespace ApiCatalago.Controllers;
 [Route("[controller]")]
 public class ProductsController: ControllerBase
 {
-    // Injetação AppDbContext
-    private readonly AppDbContext _context;
+    private readonly IProductRepository _repository;
 
-    public ProductsController(AppDbContext context)
+    public ProductsController(IProductRepository repository)
     {
-        _context = context;
+        _repository = repository;
     }
 
-    // IENumerable mais otimizado que o List nesse caso
     [HttpGet()]
-    public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
+    public ActionResult<IEnumerable<Product>> GetProducts()
     {
-        var products = await _context.Products.AsNoTracking().ToListAsync();
-        if (products.Count == 0)
+        var products = _repository.GetProducts().ToList();
+        if (products is null)
         {
             return NotFound();
         }
         
-        return products;
+        return Ok(products);
     }
 
-    [HttpGet("{id:int:min(1)}")]
-    public async Task<ActionResult<Product>> Get(int id)
+    [HttpGet("{id:int:min(1)}", Name = "GetProduct")]
+    public ActionResult<Product> Get(int id)
     {
-        var product = await _context.Products.AsNoTracking().FirstOrDefaultAsync(x => x.ProductId == id);
+        var product = _repository.GetProduct(id);
         if (product is null)
             return NotFound("Produto não encontrado");
-        return product;
+        return Ok(product);
     }
 
     [HttpPost]
@@ -45,11 +44,10 @@ public class ProductsController: ControllerBase
     {
         if (product is null)
             return BadRequest();
+
+        var newProduct = _repository.Create(product);
         
-        _context.Products.Add(product);
-        _context.SaveChanges();
-        
-        return new CreatedAtRouteResult("Get", new { id = product.ProductId }, product);
+        return new CreatedAtRouteResult("GetProduct", new { id = newProduct.ProductId }, newProduct);
     }
 
     // Restrição: Valor tem que ser inteiro 
@@ -61,26 +59,22 @@ public class ProductsController: ControllerBase
             return BadRequest();
         }
 
-        // EF Core vai saber que essa entidade vai ser alterada e persistida
-        _context.Entry(product).State = EntityState.Modified;
-        _context.SaveChanges();
+        bool updated = _repository.Update(product);
 
-        return Ok(product);
+        if (updated)
+            return Ok(product);
+      
+        return StatusCode(500, $"Falha ao atualizar o produto de id = {id}");
     }
 
     [HttpDelete("{id:int}")]
     public ActionResult Delete(int id)
     {
-        var product = _context.Products.FirstOrDefault(p => p.ProductId == id);
-
-        if (product is null)
+        bool deleted = _repository.Delete(id);
+        if (deleted)
         {
-            return NotFound("Produto não localizado");
+            return Ok($"Produto id={id} foi excluido ");
         }
-
-        _context.Products.Remove(product);
-        _context.SaveChanges();
-
-        return Ok(product);
+        return StatusCode(500, "Falha ao excluir produto");
     }
 }

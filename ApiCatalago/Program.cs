@@ -31,12 +31,10 @@ builder.Services.AddControllers(options =>
     
 builder.Services.AddOpenApi();
 
-
-
-// Quando invoca IMyService, resolve MyService
 builder.Services.AddTransient<IMyService, MyService>();
 builder.Services.AddScoped<ApiLoggingFilter>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
 
