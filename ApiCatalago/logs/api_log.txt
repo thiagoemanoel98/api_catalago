@@ -398,3 +398,77 @@ FROM "Categories" AS c
 2026-09-09 20:37:45 [Information] ApiCatalago.Filters.ApiLoggingFilter - 20:37:45
 2026-09-09 20:37:45 [Information] ApiCatalago.Filters.ApiLoggingFilter - Status code: 200
 2026-09-09 20:37:45 [Information] ApiCatalago.Filters.ApiLoggingFilter - ##################### Fim OnActionExecuted ####################
+2026-09-10 21:34:56 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5165
+2026-09-10 21:34:56 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-09-10 21:34:56 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-09-10 21:34:56 [Information] Microsoft.Hosting.Lifetime - Content root path: /Volumes/REDRAGON/Estudos/ASPDotNet/ApiCatalago/ApiCatalago
+2026-09-10 21:35:01 [Information] ApiCatalago.Filters.ApiLoggingFilter - ######################## OnActionExecuting ########################
+2026-09-10 21:35:01 [Information] ApiCatalago.Filters.ApiLoggingFilter - 21:35:01
+2026-09-10 21:35:01 [Information] ApiCatalago.Filters.ApiLoggingFilter - Model state True
+2026-09-10 21:35:01 [Information] ApiCatalago.Filters.ApiLoggingFilter - ##################### Fim OnActionExecuting ####################
+2026-09-10 21:35:02 [Information] ApiCatalago.Filters.ApiLoggingFilter - ######################## OnActionExecuted ########################
+2026-09-10 21:35:02 [Information] ApiCatalago.Filters.ApiLoggingFilter - 21:35:02
+2026-09-10 21:35:02 [Information] ApiCatalago.Filters.ApiLoggingFilter - Status code: 200
+2026-09-10 21:35:02 [Information] ApiCatalago.Filters.ApiLoggingFilter - ##################### Fim OnActionExecuted ####################
+2026-09-10 21:35:53 [Information] Microsoft.Hosting.Lifetime - Application is shutting down...
+2026-09-10 21:35:59 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5165
+2026-09-10 21:35:59 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-09-10 21:35:59 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-09-10 21:35:59 [Information] Microsoft.Hosting.Lifetime - Content root path: /Volumes/REDRAGON/Estudos/ASPDotNet/ApiCatalago/ApiCatalago
+2026-09-10 21:36:05 [Information] ApiCatalago.Filters.ApiLoggingFilter - ######################## OnActionExecuting ########################
+2026-09-10 21:36:05 [Information] ApiCatalago.Filters.ApiLoggingFilter - 21:36:05
+2026-09-10 21:36:05 [Information] ApiCatalago.Filters.ApiLoggingFilter - Model state True
+2026-09-10 21:36:05 [Information] ApiCatalago.Filters.ApiLoggingFilter - ##################### Fim OnActionExecuting ####################
+2026-09-10 21:36:05 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (23ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."CategoryId", c."ImageUrl", c."Name"
+FROM "Categories" AS c
+2026-09-10 21:36:05 [Information] ApiCatalago.Filters.ApiLoggingFilter - ######################## OnActionExecuted ########################
+2026-09-10 21:36:05 [Information] ApiCatalago.Filters.ApiLoggingFilter - 21:36:05
+2026-09-10 21:36:05 [Information] ApiCatalago.Filters.ApiLoggingFilter - Status code: 200
+2026-09-10 21:36:05 [Information] ApiCatalago.Filters.ApiLoggingFilter - ##################### Fim OnActionExecuted ####################
+2026-09-10 21:37:22 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://127.0.0.1:5199
+2026-09-10 21:37:22 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-09-10 21:37:22 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Production
+2026-09-10 21:37:22 [Information] Microsoft.Hosting.Lifetime - Content root path: /Volumes/REDRAGON/Estudos/ASPDotNet/ApiCatalago/ApiCatalago
+2026-09-10 21:37:51 [Information] Microsoft.Hosting.Lifetime - Application is shutting down...
+2026-09-10 21:40:03 [Information] Microsoft.Hosting.Lifetime - Application is shutting down...
+2026-09-10 21:40:12 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5165
+2026-09-10 21:40:12 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-09-10 21:40:12 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-09-10 21:40:12 [Information] Microsoft.Hosting.Lifetime - Content root path: /Volumes/REDRAGON/Estudos/ASPDotNet/ApiCatalago/ApiCatalago
+2026-09-10 21:40:17 [Information] ApiCatalago.Filters.ApiLoggingFilter - ######################## OnActionExecuting ########################
+2026-09-10 21:40:17 [Information] ApiCatalago.Filters.ApiLoggingFilter - 21:40:17
+2026-09-10 21:40:17 [Information] ApiCatalago.Filters.ApiLoggingFilter - Model state True
+2026-09-10 21:40:17 [Information] ApiCatalago.Filters.ApiLoggingFilter - ##################### Fim OnActionExecuting ####################
+2026-09-10 21:40:18 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."CategoryId", c."ImageUrl", c."Name"
+FROM "Categories" AS c
+2026-09-10 21:40:18 [Information] ApiCatalago.Filters.ApiLoggingFilter - ######################## OnActionExecuted ########################
+2026-09-10 21:40:18 [Information] ApiCatalago.Filters.ApiLoggingFilter - 21:40:18
+2026-09-10 21:40:18 [Information] ApiCatalago.Filters.ApiLoggingFilter - Status code: 200
+2026-09-10 21:40:18 [Information] ApiCatalago.Filters.ApiLoggingFilter - ##################### Fim OnActionExecuted ####################
+2026-09-10 21:40:35 [Information] Microsoft.Hosting.Lifetime - Application is shutting down...
+2026-09-10 21:40:39 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5165
+2026-09-10 21:40:39 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-09-10 21:40:39 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-09-10 21:40:39 [Information] Microsoft.Hosting.Lifetime - Content root path: /Volumes/REDRAGON/Estudos/ASPDotNet/ApiCatalago/ApiCatalago
+2026-09-10 21:43:10 [Information] Microsoft.Hosting.Lifetime - Application is shutting down...
+2026-09-10 21:43:18 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5165
+2026-09-10 21:43:18 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-09-10 21:43:18 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-09-10 21:43:18 [Information] Microsoft.Hosting.Lifetime - Content root path: /Volumes/REDRAGON/Estudos/ASPDotNet/ApiCatalago/ApiCatalago
+2026-09-10 21:43:22 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
+FROM "Products" AS p
+2026-09-10 21:47:31 [Information] Microsoft.Hosting.Lifetime - Application is shutting down...
+2026-09-10 21:47:36 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5165
+2026-09-10 21:47:36 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-09-10 21:47:36 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-09-10 21:47:36 [Information] Microsoft.Hosting.Lifetime - Content root path: /Volumes/REDRAGON/Estudos/ASPDotNet/ApiCatalago/ApiCatalago
+2026-09-10 21:47:45 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (38ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = Decimal), @p5='?' (DbType = DateTime), @p6='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Products" ("CategoryId", "Description", "ImageUrl", "Name", "Price", "RegistrationDate", "Stock")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "ProductId";
+2026-09-10 21:48:04 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
+FROM "Products" AS p

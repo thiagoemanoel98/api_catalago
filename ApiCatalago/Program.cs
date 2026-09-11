@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using ApiCatalago.Context;
+using ApiCatalago.DTOs.Mappings;
 using ApiCatalago.Extensions;
 using ApiCatalago.Filters;
 using ApiCatalago.Logging;
@@ -14,6 +15,10 @@ builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerProviderCon
     LogLevel = LogLevel.Information
 }));
 
+builder.Services.AddAutoMapper(
+    _ => { },
+    typeof(ProductDTOMappingProfile).Assembly
+);
 // Configurando conexão com o Banco
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AppDbContext>(options =>
