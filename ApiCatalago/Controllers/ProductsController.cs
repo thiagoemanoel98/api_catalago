@@ -3,6 +3,7 @@ using ApiCatalago.DTOs;
 using ApiCatalago.Models;
 using ApiCatalago.Repositories;
 using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
@@ -76,7 +77,34 @@ public class ProductsController: ControllerBase
         return new CreatedAtRouteResult("GetProduct", new { id = newProductDto.ProductId }, newProductDto);
     }
 
-    // Restrição: Valor tem que ser inteiro 
+
+    [HttpPatch("{id}/UpdatePartial")]
+    public ActionResult<ProductDTOUpdateResponse> Patch(int id, 
+        JsonPatchDocument<ProductDTOUpdateRequest> patchProductDto)
+    {
+        if(patchProductDto is null || id <= 0)
+            return BadRequest();
+        var product = _uof.ProductRepository.Get(p => p.ProductId == id);
+
+        if (product is null)
+            return NotFound();
+
+        // Aplica as alterações parciais
+        var productUpdateRequest = _mapper.Map<ProductDTOUpdateRequest>(product);
+        patchProductDto.ApplyTo(productUpdateRequest, ModelState);
+
+        if (!ModelState.IsValid || !TryValidateModel(productUpdateRequest))
+            return BadRequest(ModelState);
+
+        // Salva no banco de dados
+        _mapper.Map(productUpdateRequest, product);
+        _uof.ProductRepository.Update(product);
+        _uof.Commit();
+        
+        return Ok(_mapper.Map<ProductDTOUpdateResponse>(product)); 
+    } 
+    
+    
     [HttpPut("{id:int}")]
     public ActionResult<ProductDTO> Put(int id, ProductDTO productDto)
     {

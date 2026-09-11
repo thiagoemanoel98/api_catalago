@@ -472,3 +472,89 @@ RETURNING "ProductId";
 2026-09-10 21:48:04 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
 FROM "Products" AS p
+2026-09-10 22:10:59 [Information] Microsoft.Hosting.Lifetime - Application is shutting down...
+2026-09-11 08:41:51 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5165
+2026-09-11 08:41:51 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-09-11 08:41:51 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-09-11 08:41:51 [Information] Microsoft.Hosting.Lifetime - Content root path: /Volumes/REDRAGON/Estudos/ASPDotNet/ApiCatalago/ApiCatalago
+2026-09-11 08:42:23 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
+FROM "Products" AS p
+2026-09-11 08:43:20 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (7ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
+FROM "Products" AS p
+WHERE p."ProductId" = @__id_0
+LIMIT 1
+2026-09-11 08:43:20 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (8ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = Decimal), @p5='?' (DbType = DateTime), @p6='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+UPDATE "Products" SET "CategoryId" = @p0, "Description" = @p1, "ImageUrl" = @p2, "Name" = @p3, "Price" = @p4, "RegistrationDate" = @p5, "Stock" = @p6
+WHERE "ProductId" = @p7;
+2026-09-11 08:43:27 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
+FROM "Products" AS p
+2026-09-11 08:43:40 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
+FROM "Products" AS p
+WHERE p."ProductId" = @__id_0
+LIMIT 1
+2026-09-11 10:38:07 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
+FROM "Products" AS p
+WHERE p."ProductId" = @__id_0
+LIMIT 1
+2026-09-11 10:38:07 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (4ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = Decimal), @p5='?' (DbType = DateTime), @p6='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+UPDATE "Products" SET "CategoryId" = @p0, "Description" = @p1, "ImageUrl" = @p2, "Name" = @p3, "Price" = @p4, "RegistrationDate" = @p5, "Stock" = @p6
+WHERE "ProductId" = @p7;
+2026-09-11 10:40:32 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
+FROM "Products" AS p
+WHERE p."ProductId" = @__id_0
+LIMIT 1
+2026-09-11 10:40:32 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (3ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = Decimal), @p5='?' (DbType = DateTime), @p6='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+UPDATE "Products" SET "CategoryId" = @p0, "Description" = @p1, "ImageUrl" = @p2, "Name" = @p3, "Price" = @p4, "RegistrationDate" = @p5, "Stock" = @p6
+WHERE "ProductId" = @p7;
+2026-09-11 10:40:35 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
+FROM "Products" AS p
+WHERE p."ProductId" = @__id_0
+LIMIT 1
+2026-09-11 10:40:35 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = Decimal), @p5='?' (DbType = DateTime), @p6='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+UPDATE "Products" SET "CategoryId" = @p0, "Description" = @p1, "ImageUrl" = @p2, "Name" = @p3, "Price" = @p4, "RegistrationDate" = @p5, "Stock" = @p6
+WHERE "ProductId" = @p7;
+2026-09-11 10:42:29 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
+FROM "Products" AS p
+WHERE p."ProductId" = @__id_0
+LIMIT 1
+2026-09-11 10:42:57 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
+FROM "Products" AS p
+WHERE p."ProductId" = @__id_0
+LIMIT 1
+2026-09-11 10:45:06 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
+FROM "Products" AS p
+WHERE p."ProductId" = @__id_0
+LIMIT 1
+2026-09-11 10:45:23 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
+FROM "Products" AS p
+WHERE p."ProductId" = @__id_0
+LIMIT 1
+2026-09-11 10:46:32 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (5ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
+FROM "Products" AS p
+WHERE p."ProductId" = @__id_0
+LIMIT 1
+2026-09-11 10:46:38 [Information] Microsoft.Hosting.Lifetime - Application is shutting down...
+2026-09-11 10:46:41 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5165
+2026-09-11 10:46:41 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-09-11 10:46:41 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-09-11 10:46:41 [Information] Microsoft.Hosting.Lifetime - Content root path: /Volumes/REDRAGON/Estudos/ASPDotNet/ApiCatalago/ApiCatalago
+2026-09-11 10:46:55 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (28ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
+FROM "Products" AS p
+WHERE p."ProductId" = @__id_0
+LIMIT 1
+2026-09-11 10:46:55 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (11ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = Decimal), @p5='?' (DbType = DateTime), @p6='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+UPDATE "Products" SET "CategoryId" = @p0, "Description" = @p1, "ImageUrl" = @p2, "Name" = @p3, "Price" = @p4, "RegistrationDate" = @p5, "Stock" = @p6
+WHERE "ProductId" = @p7;
