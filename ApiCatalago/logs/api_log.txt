@@ -575,3 +575,20 @@ FROM "Products" AS p
 2026-09-11 21:21:03 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
 FROM "Products" AS p
+2026-09-11 22:11:51 [Information] Microsoft.Hosting.Lifetime - Application is shutting down...
+2026-09-12 21:27:06 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5165
+2026-09-12 21:27:06 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-09-12 21:27:06 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-09-12 21:27:06 [Information] Microsoft.Hosting.Lifetime - Content root path: /Volumes/REDRAGON/Estudos/ASPDotNet/ApiCatalago/ApiCatalago
+2026-09-12 21:27:23 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
+FROM "Products" AS p
+2026-09-12 21:27:28 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
+FROM "Products" AS p
+2026-09-12 21:27:33 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
+FROM "Products" AS p
+2026-09-12 21:27:36 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
+FROM "Products" AS p
