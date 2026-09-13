@@ -592,3 +592,14 @@ FROM "Products" AS p
 2026-09-12 21:27:36 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
 FROM "Products" AS p
+2026-09-12 21:42:33 [Information] Microsoft.Hosting.Lifetime - Application is shutting down...
+2026-09-12 21:46:01 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5165
+2026-09-12 21:46:01 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-09-12 21:46:01 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-09-12 21:46:01 [Information] Microsoft.Hosting.Lifetime - Content root path: /Volumes/REDRAGON/Estudos/ASPDotNet/ApiCatalago/ApiCatalago
+2026-09-12 21:46:10 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."CategoryId", c."ImageUrl", c."Name"
+FROM "Categories" AS c
+2026-09-12 21:46:19 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."CategoryId", c."ImageUrl", c."Name"
+FROM "Categories" AS c

@@ -3,10 +3,13 @@ using ApiCatalago.DTOs;
 using ApiCatalago.DTOs.Mappings;
 using ApiCatalago.Filters;
 using ApiCatalago.Models;
+using ApiCatalago.Pagination;
 using ApiCatalago.Repositories;
 using ApiCatalago.Services;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace ApiCatalago.Controllers;
 
@@ -17,12 +20,38 @@ public class CategoriesController: ControllerBase
     //private readonly IRepository<Category> _repository;
     private readonly IUnitOfWork _uof; 
     private readonly ILogger<CategoriesController> _logger;
+    private readonly IMapper _mapper;
+
     
-    public CategoriesController(ICategoryRepository repository, ILogger<CategoriesController> logger, IUnitOfWork uof)
+    public CategoriesController(ICategoryRepository repository, ILogger<CategoriesController> logger, IUnitOfWork uof, IMapper mapper)
     {
         _logger = logger;
         _uof = uof;
+        _mapper = mapper;
     }
+    
+    [HttpGet("pagination")]
+    public ActionResult<IEnumerable<CategoryDTO>> GetCategories(
+        [FromQuery] CategoriesParameters parameters)
+    {
+        var categories = _uof.CategoryRepository.GetCategories(parameters);
+
+        var metaData = new
+        {
+            categories.TotalCount,
+            categories.PageSize,
+            categories.CurrentPage,
+            categories.TotalPages,
+            categories.HasNext,
+            categories.HasPrevius
+        };
+
+        Response.Headers.Append("X-Pagination", JsonConvert.SerializeObject(metaData)); 
+        
+        var categoriesDto = _mapper.Map<IEnumerable<CategoryDTO>>(categories);
+        
+        return Ok(categoriesDto);
+    } 
 
     [HttpGet]
     [ServiceFilter(typeof(ApiLoggingFilter))]
