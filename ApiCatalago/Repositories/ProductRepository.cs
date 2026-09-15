@@ -27,6 +27,35 @@ public class ProductRepository : Repository<Product>, IProductRepository
         return productsOrdered;
     }
 
+    public PagedList<Product> GetProductsPriceFilter(ProductsFilterPrice productsFilterPriceParameters)
+    {
+        var products = GetAll().AsQueryable();
+
+        if (productsFilterPriceParameters.Price.HasValue &&
+            !string.IsNullOrEmpty(productsFilterPriceParameters.PriceCriterion))
+        {
+             if(productsFilterPriceParameters.PriceCriterion.Equals("maior", StringComparison.OrdinalIgnoreCase))
+             {
+                 products = products.Where(p => p.Price > productsFilterPriceParameters.Price.Value).
+                     OrderBy(p=>p.Price);
+             }
+             else if(productsFilterPriceParameters.PriceCriterion.Equals("menor", StringComparison.OrdinalIgnoreCase))
+             {
+                 products = products.Where(p => p.Price < productsFilterPriceParameters.Price.Value).
+                     OrderBy(p=>p.Price);
+             }
+             else if(productsFilterPriceParameters.PriceCriterion.Equals("igual", StringComparison.OrdinalIgnoreCase))
+             {
+                 products = products.Where(p => p.Price == productsFilterPriceParameters.Price.Value).
+                     OrderBy(p=>p.Price);
+             }
+        }
+
+        var productsFiltered = PagedList<Product>.ToPagedList(products, productsFilterPriceParameters.PageNumber,
+            productsFilterPriceParameters.PageSize);
+        return productsFiltered;
+    }
+
     public IEnumerable<Product> GetProductsByCategory(int id)
     {
         return GetAll().Where(c => c.CategoryId == id);

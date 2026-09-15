@@ -22,7 +22,7 @@ public class CategoriesController: ControllerBase
     private readonly ILogger<CategoriesController> _logger;
     private readonly IMapper _mapper;
 
-    
+
     public CategoriesController(ICategoryRepository repository, ILogger<CategoriesController> logger, IUnitOfWork uof, IMapper mapper)
     {
         _logger = logger;
@@ -36,6 +36,11 @@ public class CategoriesController: ControllerBase
     {
         var categories = _uof.CategoryRepository.GetCategories(parameters);
 
+        return GetCategories(categories);
+    }
+
+    private ActionResult<IEnumerable<CategoryDTO>>  GetCategories(PagedList<Category> categories)
+    {
         var metaData = new
         {
             categories.TotalCount,
@@ -51,8 +56,16 @@ public class CategoriesController: ControllerBase
         var categoriesDto = _mapper.Map<IEnumerable<CategoryDTO>>(categories);
         
         return Ok(categoriesDto);
-    } 
+    }
 
+    [HttpGet("filter/name/pagination")]
+    public ActionResult<IEnumerable<CategoryDTO>> GetCategoriesFiltered(
+        [FromQuery] CategoriesFilterName categoriesFilterName)
+    {
+        var categoriesFiltered = _uof.CategoryRepository.GetCategoriesNameFilter(categoriesFilterName);
+
+        return GetCategories(categoriesFiltered);
+    }
     [HttpGet]
     [ServiceFilter(typeof(ApiLoggingFilter))]
     public ActionResult<IEnumerable<CategoryDTO>> Get()
