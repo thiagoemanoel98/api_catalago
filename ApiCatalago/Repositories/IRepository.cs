@@ -5,9 +5,9 @@ namespace ApiCatalago.Repositories;
 public interface IRepository<T>
 {
     // Cuidado pra não violar o principio SOLID ISP
-    IEnumerable<T> GetAll();
+    Task<IEnumerable<T>> GetAllAsync();
     
-    T? Get(Expression<Func<T, bool>> predicate);
+    Task<T?> GetAsync(Expression<Func<T, bool>> predicate);
 
     T Create(T entity);
 

@@ -1,6 +1,8 @@
 using ApiCatalago.Context;
 using ApiCatalago.Models;
 using ApiCatalago.Pagination;
+using X.PagedList;
+using X.PagedList.Extensions;
 
 namespace ApiCatalago.Repositories;
 
@@ -9,27 +11,20 @@ public class ProductRepository : Repository<Product>, IProductRepository
     public ProductRepository(AppDbContext context) : base(context)
     {
     }
-
-    /** public IEnumerable<Product> getProducts(ProductsParameters productsParameters)
-     {
-         return GetAll()
-             .OrderBy(p => p.Name)
-             .Skip((productsParameters.PageNumber - 1) * productsParameters.PageSize)
-             .Take(productsParameters.PageSize).ToList();
-
-     }*/
-
-    public PagedList<Product> GetProducts(ProductsParameters productsParameters)
+    
+    public async Task<IPagedList<Product>> GetProductsAsync(ProductsParameters productsParameters)
     {
-        var products = GetAll().OrderBy(p => p.ProductId).AsQueryable();
-        var productsOrdered =
-            PagedList<Product>.ToPagedList(products, productsParameters.PageNumber, productsParameters.PageSize);
-        return productsOrdered;
+        var products = await GetAllAsync();
+        var productsOrdered = products.OrderBy(p => p.ProductId).AsQueryable();
+        
+        var result = await
+            productsOrdered.ToPagedList(productsOrdered, productsParameters.PageNumber, productsParameters.PageSize);
+        return result ;
     }
 
-    public PagedList<Product> GetProductsPriceFilter(ProductsFilterPrice productsFilterPriceParameters)
+    public async Task<Pagination.PagedList<Product>> GetProductsPriceFilterAsync(ProductsFilterPrice productsFilterPriceParameters)
     {
-        var products = GetAll().AsQueryable();
+        var products = await GetAllAsync();
 
         if (productsFilterPriceParameters.Price.HasValue &&
             !string.IsNullOrEmpty(productsFilterPriceParameters.PriceCriterion))
@@ -51,13 +46,15 @@ public class ProductRepository : Repository<Product>, IProductRepository
              }
         }
 
-        var productsFiltered = PagedList<Product>.ToPagedList(products, productsFilterPriceParameters.PageNumber,
+        var productsFiltered = Pagination.PagedList<Product>.ToPagedList(products.AsQueryable(), productsFilterPriceParameters.PageNumber,
             productsFilterPriceParameters.PageSize);
         return productsFiltered;
     }
 
-    public IEnumerable<Product> GetProductsByCategory(int id)
+    public async Task<IEnumerable<Product>> GetProductsByCategoryAsync(int id)
     {
-        return GetAll().Where(c => c.CategoryId == id);
+        var products = await GetAllAsync();
+        var productsCategory = products.Where(p => p.CategoryId == id);
+        return productsCategory; 
     }
 }

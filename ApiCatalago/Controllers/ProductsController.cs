@@ -26,9 +26,9 @@ public class ProductsController: ControllerBase
     }
 
     [HttpGet("products/{id}")]
-    public ActionResult <IEnumerable<ProductDTO>> GetProductsByCategory(int id)
+    public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductsByCategory(int id)
     {
-       var products = _uof.ProductRepository.GetProductsByCategory(id);
+       var products = await _uof.ProductRepository.GetProductsByCategoryAsync(id);
 
         if(products is null)
             return NotFound();
@@ -39,10 +39,10 @@ public class ProductsController: ControllerBase
     }
 
     [HttpGet("pagination")]
-    public ActionResult<IEnumerable<ProductDTO>> GetProducts(
+    public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProducts(
         [FromQuery] ProductsParameters productsParameters)
     {
-        var products = _uof.ProductRepository.GetProducts(productsParameters);
+        var products = await _uof.ProductRepository.GetProductsAsync(productsParameters);
 
         return GetProducts(products);
     }
@@ -67,16 +67,16 @@ public class ProductsController: ControllerBase
     }
 
     [HttpGet("filter/price/pagination")]
-    public ActionResult<IEnumerable<ProductDTO>> GetProductsFilterPrice([FromQuery]  ProductsFilterPrice productsFilterPriceParameters)
+    public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductsFilterPrice([FromQuery]  ProductsFilterPrice productsFilterPriceParameters)
     {
-        var products = _uof.ProductRepository.GetProductsPriceFilter(productsFilterPriceParameters);
+        var products = await _uof.ProductRepository.GetProductsPriceFilterAsync(productsFilterPriceParameters);
         return GetProducts(products);
     }
 
     [HttpGet()]
-    public ActionResult<IEnumerable<ProductDTO>> GetProducts()
+    public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProducts()
     {
-        var products = _uof.ProductRepository.GetAll();
+        var products = await _uof.ProductRepository.GetAllAsync();
         if (products is null)
         {
             return NotFound();
@@ -88,9 +88,9 @@ public class ProductsController: ControllerBase
     }
 
     [HttpGet("{id:int:min(1)}", Name = "GetProduct")]
-    public ActionResult<ProductDTO> Get(int id)
+    public async Task<ActionResult<ProductDTO>> Get(int id)
     {
-        var product = _uof.ProductRepository.Get(p => p.ProductId == id);
+        var product = await _uof.ProductRepository.GetAsync(p => p.ProductId == id);
         if (product is null)
             return NotFound("Produto não encontrado");
 
@@ -99,7 +99,7 @@ public class ProductsController: ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<ProductDTO> Post(ProductDTO productDto)
+    public async Task<ActionResult<ProductDTO>> Post(ProductDTO productDto)
     {
         if (productDto is null)
             return BadRequest();
@@ -107,7 +107,7 @@ public class ProductsController: ControllerBase
         var product = _mapper.Map<Product>(productDto);
         
         var newProduct = _uof.ProductRepository.Create(product);
-        _uof.Commit();
+        await _uof.CommitAsync();
 
         var newProductDto = _mapper.Map<ProductDTO>(product);
         
@@ -116,12 +116,12 @@ public class ProductsController: ControllerBase
 
 
     [HttpPatch("{id}/UpdatePartial")]
-    public ActionResult<ProductDTOUpdateResponse> Patch(int id, 
+    public async Task<ActionResult<ProductDTOUpdateResponse>> Patch(int id,
         JsonPatchDocument<ProductDTOUpdateRequest> patchProductDto)
     {
         if(patchProductDto is null || id <= 0)
             return BadRequest();
-        var product = _uof.ProductRepository.Get(p => p.ProductId == id);
+        var product = await _uof.ProductRepository.GetAsync(p => p.ProductId == id);
 
         if (product is null)
             return NotFound();
@@ -136,14 +136,14 @@ public class ProductsController: ControllerBase
         // Salva no banco de dados
         _mapper.Map(productUpdateRequest, product);
         _uof.ProductRepository.Update(product);
-        _uof.Commit();
+        await _uof.CommitAsync();
         
         return Ok(_mapper.Map<ProductDTOUpdateResponse>(product)); 
     } 
     
     
     [HttpPut("{id:int}")]
-    public ActionResult<ProductDTO> Put(int id, ProductDTO productDto)
+    public async Task<ActionResult<ProductDTO>> Put(int id, ProductDTO productDto)
     {
         if (id != productDto.ProductId)
         {
@@ -153,7 +153,7 @@ public class ProductsController: ControllerBase
         var product = _mapper.Map<Product>(productDto);
 
         var productUpdated = _uof.ProductRepository.Update(product);
-        _uof.Commit();
+        await _uof.CommitAsync();
         
         var productUpdatedDto = _mapper.Map<ProductDTO>(productUpdated);
         
@@ -161,9 +161,9 @@ public class ProductsController: ControllerBase
     }
 
     [HttpDelete("{id:int}")]
-    public ActionResult<ProductDTO> Delete(int id)
+    public async Task<ActionResult<ProductDTO>> Delete(int id)
     {
-        var product = _uof.ProductRepository.Get(p => p.ProductId == id);
+        var product = await _uof.ProductRepository.GetAsync(p => p.ProductId == id);
 
         if(product is null)
         {
@@ -171,7 +171,7 @@ public class ProductsController: ControllerBase
         }
 
         var productDeleted = _uof.ProductRepository.Delete(product);
-        _uof.Commit();
+        await _uof.CommitAsync();
         
         return Ok(productDeleted);
     }

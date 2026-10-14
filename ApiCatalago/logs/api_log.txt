@@ -603,3 +603,46 @@ FROM "Categories" AS c
 2026-09-12 21:46:19 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 SELECT c."CategoryId", c."ImageUrl", c."Name"
 FROM "Categories" AS c
+2026-09-12 22:04:24 [Information] Microsoft.Hosting.Lifetime - Application is shutting down...
+2026-09-15 16:46:59 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5165
+2026-09-15 16:46:59 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-09-15 16:46:59 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-09-15 16:46:59 [Information] Microsoft.Hosting.Lifetime - Content root path: /Volumes/REDRAGON/Estudos/ASPDotNet/ApiCatalago/ApiCatalago
+2026-09-15 16:47:06 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
+FROM "Products" AS p
+2026-09-15 16:47:24 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
+FROM "Products" AS p
+2026-09-15 16:47:32 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
+FROM "Products" AS p
+2026-09-15 16:47:40 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT p."ProductId", p."CategoryId", p."Description", p."ImageUrl", p."Name", p."Price", p."RegistrationDate", p."Stock"
+FROM "Products" AS p
+2026-09-15 17:38:48 [Information] Microsoft.Hosting.Lifetime - Application is shutting down...
+2026-09-15 17:50:20 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5165
+2026-09-15 17:50:20 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-09-15 17:50:20 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-09-15 17:50:20 [Information] Microsoft.Hosting.Lifetime - Content root path: /Volumes/REDRAGON/Estudos/ASPDotNet/ApiCatalago/ApiCatalago
+2026-09-15 17:50:33 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."CategoryId", c."ImageUrl", c."Name"
+FROM "Categories" AS c
+2026-09-15 17:50:41 [Information] ApiCatalago.Filters.ApiLoggingFilter - ######################## OnActionExecuting ########################
+2026-09-15 17:50:41 [Information] ApiCatalago.Filters.ApiLoggingFilter - 17:50:41
+2026-09-15 17:50:41 [Information] ApiCatalago.Filters.ApiLoggingFilter - Model state True
+2026-09-15 17:50:41 [Information] ApiCatalago.Filters.ApiLoggingFilter - ##################### Fim OnActionExecuting ####################
+2026-09-15 17:50:41 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."CategoryId", c."ImageUrl", c."Name"
+FROM "Categories" AS c
+2026-09-15 17:50:41 [Information] ApiCatalago.Filters.ApiLoggingFilter - ######################## OnActionExecuted ########################
+2026-09-15 17:50:41 [Information] ApiCatalago.Filters.ApiLoggingFilter - 17:50:41
+2026-09-15 17:50:41 [Information] ApiCatalago.Filters.ApiLoggingFilter - Status code: 200
+2026-09-15 17:50:41 [Information] ApiCatalago.Filters.ApiLoggingFilter - ##################### Fim OnActionExecuted ####################
+2026-09-15 17:50:49 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."CategoryId", c."ImageUrl", c."Name"
+FROM "Categories" AS c
+2026-09-15 17:50:59 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."CategoryId", c."ImageUrl", c."Name"
+FROM "Categories" AS c
+2026-09-15 22:55:21 [Information] Microsoft.Hosting.Lifetime - Application is shutting down...
