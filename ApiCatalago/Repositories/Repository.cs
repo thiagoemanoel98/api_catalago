@@ -12,12 +12,17 @@ public class Repository<T>: IRepository<T> where T : class
     {
         _context = context;
     }
+
+    protected IQueryable<T> GetAllQueryable()
+    {
+        return _context.Set<T>().AsNoTracking();
+    }
     
     public async Task<IEnumerable<T>> GetAllAsync()
     {
         // SET do EF acessa uma coleção de uma tabela 
         // EX: _context.Produtos = _context.Set<Produto>()
-        return await _context.Set<T>().AsNoTracking().ToListAsync();
+        return await GetAllQueryable().ToListAsync();
     }
 
     public async Task<T?> GetAsync(Expression<Func<T, bool>> predicate)

@@ -1,9 +1,6 @@
 using ApiCatalago.Context;
 using ApiCatalago.Models;
 using ApiCatalago.Pagination;
-using Microsoft.EntityFrameworkCore;
-using X.PagedList;
-using X.PagedList.Extensions;
 
 namespace ApiCatalago.Repositories;
 
@@ -13,29 +10,32 @@ public class CategoryRepository : Repository<Category>, ICategoryRepository
     {
     }
     
-    public async Task<IPagedList<Category>> GetCategoriesAsync(CategoriesParameters parameters)
+    public Task<PagedList<Category>> GetCategoriesAsync(CategoriesParameters parameters)
     {
-        var categories = await GetAllAsync();
-        var categoriesOrdered = categories.OrderBy(c => c.CategoryId).AsQueryable();
-        
-        var result = Pagination.PagedList<Category>.ToPagedList(categoriesOrdered, parameters.PageNumber, parameters.PageSize);
-        
-        return result; 
+        var categories = GetAllQueryable()
+            .OrderBy(category => category.CategoryId);
+
+        return PagedList<Category>.ToPagedListAsync(
+            categories,
+            parameters.PageNumber,
+            parameters.PageSize);
     }
 
-    public async Task<IPagedList<Category>> GetCategoriesNameFilterAsync(CategoriesFilterName parameters)
+    public Task<PagedList<Category>> GetCategoriesNameFilterAsync(CategoriesFilterName parameters)
     {
-        var categories = await GetAllAsync();
+        IQueryable<Category> categories = GetAllQueryable();
 
         if (!string.IsNullOrEmpty(parameters.Name))
         {
-            categories = categories.Where(c => c.Name.Contains(parameters.Name));
+            categories = categories.Where(category =>
+                category.Name != null && category.Name.Contains(parameters.Name));
         }
 
-        //var categoriesFiltered =
-        //    Pagination.PagedList<Category>.ToPagedList(categories.AsQueryable(), parameters.PageNumber, parameters.PageSize);
-        var categoriesFiltered = await categories.ToPagedListAsync(parameters.PageNumber, parameters.PageSize);
-        
-        return categoriesFiltered;
+        categories = categories.OrderBy(category => category.CategoryId);
+
+        return PagedList<Category>.ToPagedListAsync(
+            categories,
+            parameters.PageNumber,
+            parameters.PageSize);
     }
 }
