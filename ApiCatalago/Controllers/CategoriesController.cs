@@ -7,6 +7,7 @@ using ApiCatalago.Pagination;
 using ApiCatalago.Repositories;
 using ApiCatalago.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -67,6 +68,7 @@ public class CategoriesController: ControllerBase
         return GetCategories(categoriesFiltered);
     }
     [HttpGet]
+    [Authorize]
     [ServiceFilter(typeof(ApiLoggingFilter))]
     public async Task<ActionResult<IEnumerable<CategoryDTO>>> Get()
     {

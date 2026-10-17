@@ -36,6 +36,9 @@ builder.Services.AddControllers(options =>
     
 builder.Services.AddOpenApi();
 
+builder.Services.AddAuthorization();
+builder.Services.AddAuthentication("Bearer").AddJwtBearer();
+
 builder.Services.AddTransient<IMyService, MyService>();
 builder.Services.AddScoped<ApiLoggingFilter>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();

@@ -646,3 +646,37 @@ FROM "Categories" AS c
 SELECT c."CategoryId", c."ImageUrl", c."Name"
 FROM "Categories" AS c
 2026-09-15 22:55:21 [Information] Microsoft.Hosting.Lifetime - Application is shutting down...
+2026-10-17 16:47:28 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5165
+2026-10-17 16:47:28 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-10-17 16:47:28 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-10-17 16:47:28 [Information] Microsoft.Hosting.Lifetime - Content root path: /Users/thiagoemanoel/Estudos/api_catalago/ApiCatalago
+2026-10-17 16:56:25 [Information] Microsoft.Hosting.Lifetime - Application is shutting down...
+2026-10-17 16:56:44 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5165
+2026-10-17 16:56:44 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-10-17 16:56:44 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-10-17 16:56:44 [Information] Microsoft.Hosting.Lifetime - Content root path: /Users/thiagoemanoel/Estudos/api_catalago/ApiCatalago
+2026-10-17 17:06:03 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5165
+2026-10-17 17:06:03 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-10-17 17:06:03 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-10-17 17:06:03 [Information] Microsoft.Hosting.Lifetime - Content root path: /Users/thiagoemanoel/Estudos/api_catalago/ApiCatalago
+2026-10-17 17:09:13 [Information] Microsoft.Hosting.Lifetime - Application is shutting down...
+2026-10-17 17:11:51 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5165
+2026-10-17 17:11:51 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-10-17 17:11:51 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-10-17 17:11:51 [Information] Microsoft.Hosting.Lifetime - Content root path: /Users/thiagoemanoel/Estudos/api_catalago/ApiCatalago
+2026-10-17 17:12:03 [Information] ApiCatalago.Filters.ApiLoggingFilter - ######################## OnActionExecuting ########################
+2026-10-17 17:12:03 [Information] ApiCatalago.Filters.ApiLoggingFilter - 17:12:03
+2026-10-17 17:12:03 [Information] ApiCatalago.Filters.ApiLoggingFilter - Model state True
+2026-10-17 17:12:03 [Information] ApiCatalago.Filters.ApiLoggingFilter - ##################### Fim OnActionExecuting ####################
+2026-10-17 17:12:04 [Information] Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (29ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."CategoryId", c."ImageUrl", c."Name"
+FROM "Categories" AS c
+2026-10-17 17:12:04 [Information] ApiCatalago.Filters.ApiLoggingFilter - ######################## OnActionExecuted ########################
+2026-10-17 17:12:04 [Information] ApiCatalago.Filters.ApiLoggingFilter - 17:12:04
+2026-10-17 17:12:04 [Information] ApiCatalago.Filters.ApiLoggingFilter - Status code: 200
+2026-10-17 17:12:04 [Information] ApiCatalago.Filters.ApiLoggingFilter - ##################### Fim OnActionExecuted ####################
+2026-10-17 17:26:44 [Information] Microsoft.Hosting.Lifetime - Application is shutting down...
+2026-10-17 17:26:52 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5165
+2026-10-17 17:26:52 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-10-17 17:26:52 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-10-17 17:26:52 [Information] Microsoft.Hosting.Lifetime - Content root path: /Users/thiagoemanoel/Estudos/api_catalago/ApiCatalago
