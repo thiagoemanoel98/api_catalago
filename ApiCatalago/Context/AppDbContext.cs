@@ -1,4 +1,5 @@
 using ApiCatalago.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApiCatalago.Context;
@@ -7,7 +8,7 @@ namespace ApiCatalago.Context;
  * Faz o mapeamento com o Banco de dados
  */
 
-public class AppDbContext : DbContext
+public class AppDbContext : IdentityDbContext
 {
     // Construtor que passa parametro options e passa para o construtor da classe base
     public AppDbContext(DbContextOptions<AppDbContext> options): base(options)
